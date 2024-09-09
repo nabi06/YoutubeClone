@@ -5,7 +5,7 @@ import Button from "../Component/Button"
 function Nav(){
     const [isShowBar,setIsShowBar] = useState(false)
     return(
-        <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4">
+        <div className="flex gap-10  lg:gap-20 justify-between pt-2 mb-6 mx-4">
             <div  className={` gap-4 items-center  ${isShowBar?"hidden":"flex"}`}>
                 <Button variant="ghost" size="icon" ><Menu/></Button>
                 <a href="/">Youtube</a>

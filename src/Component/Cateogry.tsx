@@ -20,6 +20,7 @@ function Cateogry({cateogry ,selectedCategory,onSelect}:CateogryProps) {
 
     const observer = new ResizeObserver(entries => {
       const container = entries[0]?.target
+      console.log(container)
       if (container == null) return
 
       setIsLeft(translate > 0)
