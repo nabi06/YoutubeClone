@@ -1,15 +1,14 @@
 import { ArrowLeft, Bell, Link, Menu, Mic, Search, Upload } from "lucide-react"
 import { useState } from "react"
 import Button from "../Component/Button"
+import { useSidebarContext } from "../Contexts/SidebarContext"
 
 function Nav(){
     const [isShowBar,setIsShowBar] = useState(false)
+    
     return(
         <div className="flex gap-10  lg:gap-20 justify-between pt-2 mb-6 mx-4">
-            <div  className={` gap-4 items-center  ${isShowBar?"hidden":"flex"}`}>
-                <Button variant="ghost" size="icon" ><Menu/></Button>
-                <a href="/">Youtube</a>
-            </div>
+            <PageHeaderFirstSection hidden={isShowBar} />
             <form className={`flex-grow gap-4 justify-center ${isShowBar?"flex":"hidden md:flex "}`}>
                 {isShowBar &&<Button variant="default" size="icon" className="flex-shrink-0  " onClick={()=>setIsShowBar(!isShowBar)}>
                     <ArrowLeft/>
@@ -48,3 +47,16 @@ function Nav(){
     )
 }
 export default  Nav
+
+type PageHeaderSection={
+    hidden:boolean
+}
+export function PageHeaderFirstSection({hidden}:PageHeaderSection){
+    const {toggle}=useSidebarContext()
+    return(
+        <div  className={` gap-4 items-center  ${hidden?"hidden":"flex"}`}>
+                <Button variant="ghost" size="icon" onClick={toggle} ><Menu/></Button>
+                <a href="/">Youtube</a>
+            </div>
+    )
+}
